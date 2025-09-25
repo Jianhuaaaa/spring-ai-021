@@ -29,7 +29,7 @@ public class TestDeepseek {
     @Test
     public void testDeekseekOptions(@Autowired DeepSeekChatModel chatModel) {
         DeepSeekChatOptions options = DeepSeekChatOptions.builder()
-                // 0-2 double value
+                // 0-2 double value, used to optimize model output.
                 .temperature(1.9d)
                 .model("deepseek-chat")
                 .build();
@@ -44,12 +44,16 @@ public class TestDeepseek {
         Flux<ChatResponse> chatResponse = chatModel.stream(new Prompt("香蕉为什么是弯的"));
         chatResponse.toIterable().forEach(r -> {
             DeepSeekAssistantMessage assistantMessage = (DeepSeekAssistantMessage) r.getResult().getOutput();
-            System.out.print(assistantMessage.getReasoningContent());
+            String reasoningContent = assistantMessage.getReasoningContent();
+            if (reasoningContent != null) {
+                System.out.print(reasoningContent);
+            }
         });
-        System.out.println("----------------------------------");
         chatResponse.toIterable().forEach(r -> {
             DeepSeekAssistantMessage assistantMessage = (DeepSeekAssistantMessage) r.getResult().getOutput();
-            System.out.print(assistantMessage.getText());
+            String text = assistantMessage.getText();
+            if (text != null)
+                System.out.print(text);
         });
     }
 }
