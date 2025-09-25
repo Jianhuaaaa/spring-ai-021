@@ -30,7 +30,7 @@ public class TestChatClient {
     }
 
     @Test
-    public void testMultiChatClients(@Autowired DeepSeekChatModel deepSeekChatModel) {
+    public void testMultiChatModels(@Autowired DeepSeekChatModel deepSeekChatModel) {
         ChatClient chatClient = ChatClient.builder(deepSeekChatModel).build();
         String content = chatClient.prompt()
                 .user("Good morning")

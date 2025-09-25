@@ -53,3 +53,14 @@ spring.ai.dashscope.api-key=${DASH_SCOPE_KEY}
 ### Chat Client
 
 ![chat-client.png](src/main/resources/pictures/chat-client.png)
+
+### Chat API
+
+- URL: http://localhost:8080/api/chat?message=%E4%BD%A0%E5%A5%BD&platform=deepseek&model=deepseek-chat&tempreature=1.8
+- Response
+
+```html
+你好！很高兴见到你！😊
+
+有什么我可以帮助你的吗？无论是回答问题、聊天交流，还是需要任何协助，我都很乐意为你提供帮助！
+```
